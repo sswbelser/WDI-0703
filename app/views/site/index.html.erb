@@ -1,0 +1,13 @@
+<h1>Welcome to the site!</h1>
+<hr>
+<% if current_user %>
+  <p>Hello, <strong><%= current_user.email %></strong>. You are currently logged in. <%= link_to "Click here", logout_path %> to log out.</p>
+<% else %>
+  <p>
+    <!-- <a href="/signup" class="btn btn-primary">Please Sign Up</a> -->
+    <!-- refactored with rails helpers: -->
+    <%= link_to "Sign Up", signup_path, class: "btn btn-primary" %>
+    &nbsp; or &nbsp;
+    <%= link_to "Log In", login_path, class: "btn btn-primary" %>
+  </p>
+<% end %>

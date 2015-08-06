@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rails Auth Practice</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+
+  <!-- bootstrap css -->
+  <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <%= stylesheet_link_tag :application, media: :all %>
+</head>
+<body>
+  <div class="container text-center">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: "alert #{name == 'error' ? 'alert-danger' : 'alert-info'}" %>
+    <% end %>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <%= yield %>
+      </div>
+    </div>
+    <hr>
+    <p>Current user: <%= current_user.email if current_user %></p>
+  </div>
+  <%= javascript_include_tag :application %>
+
+  <!-- bootstrap js -->
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+</body>
+</html>
